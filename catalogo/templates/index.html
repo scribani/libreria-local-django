@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Página de inicio de Librería Local</h1>
+    <p>¡Bienvenido a Librería Local, una página web desarrollada por <em>Andrés Scribani</em>!</p>
+    <h2>Contenido Dinámico</h2>
+    <p>La Librería tiene el siguiente conteo de registros:</p>
+    <ul>
+        <li><strong>Libros:</strong> {{ num_libros }}</li>
+        <li><strong>Copias:</strong> {{ num_instancias }}</li>
+        <li><strong>Copias disponibles:</strong> {{ num_instancias_disponibles }}</li>
+        <li><strong>Autores:</strong> {{ num_autores }}</li>
+        <li><strong>Libros que contienen la palabra buscada:</strong> {{ num_libros_palabra }}</li>
+    </ul>
+{% endblock %}
