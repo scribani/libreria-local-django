@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from catalogo.models import Libro, Autor, InstanciaDeLibro, Genero, Lenguaje
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 def index(request):
@@ -47,3 +48,25 @@ class VistaDeListaDeAutores(generic.ListView):
 class VistaDeDetallesDeAutores(generic.DetailView):
     model = Autor
     template_name = 'autores/detalle_del_autor.html'
+
+
+class VistaDeListaDeLibrosPrestados(LoginRequiredMixin, generic.ListView):
+    model = InstanciaDeLibro
+    context_object_name = 'instanciadelibro_lista'
+    template_name = 'libros/instanciadelibro_lista_prestados_usuario.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        return InstanciaDeLibro.objects.filter(prestatario=self.request.user).filter(estatus__exact='p').order_by('fecha_de_devolucion')
+
+
+class VistaDePrestamosStaff(PermissionRequiredMixin, generic.ListView):
+    permission_required = 'catalogo.can_mark_returned'
+    model = InstanciaDeLibro
+    context_object_name = 'instanciadelibro_lista_staff'
+    template_name = 'libros/instanciadelibro_lista_prestados_staff.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        return InstanciaDeLibro.objects.filter(estatus__exact='p').order_by('fecha_de_devolucion')
+

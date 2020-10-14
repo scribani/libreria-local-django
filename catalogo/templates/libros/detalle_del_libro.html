@@ -17,9 +17,12 @@
                 {{ copia.get_estatus_display }}
             </p>
             {% if copia.estatus != 'd' %}
-                <p><strong>Debe ser devuelto:</strong> {{ copia.fecha_de_devolucion }}</p>
+                <p class="{% if copia.esta_atrasado %}text-danger{% endif %}">
+                    <strong>Debe ser devuelto:</strong> {{ copia.fecha_de_devolucion }}
+                </p>
             {% endif %}
-            <p class="silenciado"><strong>Id:</strong> {{ copia.id }}</p>
+            <p class="text-muted"><strong>Id:</strong> {{ copia.id }}</p>
         {% endfor %}
     </div>
+    <p>{{ user.get_all_permissions }}</p>
 {% endblock %}

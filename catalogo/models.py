@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+from datetime import date
 import uuid # Requerido para definir instancias unicas por libro
 
 
@@ -47,6 +49,7 @@ class InstanciaDeLibro(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='ID único para este libro en particular en toda la librería')
     libro = models.ForeignKey('Libro', on_delete=models.SET_NULL, null=True) 
     fecha_de_devolucion = models.DateField(null=True, blank=True)
+    prestatario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     ESTADO_DEL_PRESTAMO = (
         ('m', 'Mantenimiento'),
@@ -62,9 +65,16 @@ class InstanciaDeLibro(models.Model):
         default=' ',
         help_text='Disponibilidad del libro',
     )
+    
+    @property
+    def esta_atrasado(self):
+        if self.fecha_de_devolucion and date.today() > self.fecha_de_devolucion:
+            return True
+        return False
 
     class Meta:
         ordering = ['fecha_de_devolucion']
+        permissions = (("can_mark_returned", "Can set book as returned"),)
 
     def __str__(self):
         return f'{self.libro.titulo} ({self.id})'

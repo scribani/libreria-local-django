@@ -43,8 +43,9 @@ class AdminInstanciaDeLibro(admin.ModelAdmin):
     list_display = (
         'libro',
         'estatus',
+        'prestatario',
         'fecha_de_devolucion',
-        'id'
+        'id',
     )
     list_filter = ('estatus', 'fecha_de_devolucion')
 
@@ -54,6 +55,11 @@ class AdminInstanciaDeLibro(admin.ModelAdmin):
             'fields': ('libro', 'id')
         }),
         ('Disponibilidad', {
-            'fields': ('estatus', 'fecha_de_devolucion')
+            'fields': (
+                'estatus',
+                'fecha_de_devolucion',
+                'prestatario',
+            )
         }),
     )
+
