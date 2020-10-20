@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import Autor, Genero, Libro, InstanciaDeLibro, Lenguaje
 
 admin.site.register(Genero)
@@ -62,4 +63,3 @@ class AdminInstanciaDeLibro(admin.ModelAdmin):
             )
         }),
     )
-

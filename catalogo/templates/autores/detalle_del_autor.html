@@ -1,5 +1,15 @@
 {% extends "base_generic.html" %}
 
+{% block sidebar %}
+    {{ block.super }}
+    {% if perms.catalogo.can_mark_returned %}
+      <ul class="sidebar-nav">
+        <li><a href="{% url 'autor_actualizar' autor.id %}">Actualizar Autor</a></li>
+        <li><a href="{% url 'autor_eliminar' autor.id %}">Eliminar Autor</a></li>
+      </ul>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <h1>Autor: {{ autor }}</h1>
     

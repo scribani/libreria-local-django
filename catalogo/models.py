@@ -1,8 +1,9 @@
+from datetime import date, timedelta
+import uuid # Requerido para definir instancias unicas por libro
+
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from datetime import date
-import uuid # Requerido para definir instancias unicas por libro
 
 
 class Genero(models.Model):
@@ -95,4 +96,3 @@ class Autor(models.Model):
 
     def __str__(self):
         return f'{self.apellido}, {self.nombre}'
-

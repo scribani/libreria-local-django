@@ -7,11 +7,19 @@
         {% for instancia in instanciadelibro_lista_staff %}
             <li class="{% if instancia.esta_atrasado %}text-danger{% endif %}">
                 <a href="{% url 'detalle_del_libro' instancia.libro.pk %}">{{ instancia.libro.titulo }}</a> ({{ instancia.fecha_de_devolucion }}) - {{ instancia.prestatario }}
+                <br>
+                <p class="text-muted"><strong>Id:</strong> {{ instancia.id }}</p>
             </li>
+            <a class="btn btn-outline-dark btn-sm" href="{% url 'renovar_libro' instancia.id %}">
+                Renovar
+            </a>
+            <a class="btn btn-outline-dark btn-sm" href="{% url 'devolver_libro' instancia.id %}">
+                Devolver
+            </a>
+            <hr>
         {% endfor %}
         </ul>
     {% else %}
         <p>No hay libros prestados.</p>
     {% endif %}
 {% endblock %}
-

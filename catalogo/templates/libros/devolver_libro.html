@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Devolver: {{ instancia_de_libro.libro.titulo }}</h1>
+    <p>Prestatario: {{ instancia_de_libro.prestatario }}</p>
+    <p {% if instancia_de_libro.esta_atrasado %}class="text-danger"{% endif %}>Fecha de devolución: {{ instancia_de_libro.fecha_de_devolucion }}</p>
+
+    <p>¿Esta seguro de estar recibiendo el libro cuyo Id es el siguiente?</p>
+    <p class="text-muted">{{ instancia_de_libro.id }}</p>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Sí, continuar" />
+    </form>
+{% endblock %}

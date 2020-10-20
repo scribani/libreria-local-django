@@ -1,5 +1,15 @@
 {% extends "base_generic.html" %}
 
+{% block sidebar %}
+    {{ block.super }}
+    {% if perms.catalogo.can_mark_returned %}
+      <ul class="sidebar-nav">
+        <li><a href="{% url 'libro_actualizar' libro.id %}">Actualizar Libro</a></li>
+        <li><a href="{% url 'libro_eliminar' libro.id %}">Eliminar Libro</a></li>
+      </ul>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <h1>Título: {{ libro.titulo }}</h1>
     
@@ -13,16 +23,23 @@
         <h4>Copias</h4>
         {% for copia in libro.instanciadelibro_set.all %}
             <hr>
-            <p style="margin:0px" class="{% if copia.estatus == 'd' %}text-success{% elif copia.estatus == 'm' %}text-danger{% else %}text-warning{% endif %}">
+            <p style="margin: 0px;" class="{% if copia.estatus == 'd' %}text-success{% elif copia.estatus == 'm' %}text-danger{% else %}text-warning{% endif %}">
                 {{ copia.get_estatus_display }}
             </p>
+            <p class="text-muted"><strong>Id:</strong> {{ copia.id }}</p>
             {% if copia.estatus != 'd' %}
-                <p class="{% if copia.esta_atrasado %}text-danger{% endif %}">
+                <p style="margin-bottom: 0px;" class="{% if copia.esta_atrasado %}text-danger{% endif %}">
                     <strong>Debe ser devuelto:</strong> {{ copia.fecha_de_devolucion }}
                 </p>
+                {% if perms.catalogo.can_mark_returned %}
+                    <a class="btn btn-outline-dark btn-sm" href="{% url 'renovar_libro' copia.id %}">
+                        Renovar
+                    </a>
+                    <a class="btn btn-outline-dark btn-sm" href="{% url 'devolver_libro' copia.id %}">
+                        Devolver
+                    </a>
+                {% endif %}
             {% endif %}
-            <p class="text-muted"><strong>Id:</strong> {{ copia.id }}</p>
         {% endfor %}
     </div>
-    <p>{{ user.get_all_permissions }}</p>
 {% endblock %}

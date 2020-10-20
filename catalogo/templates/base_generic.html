@@ -35,6 +35,10 @@
             <hr>
             <li>Staff</li>
             <li><a href="{% url 'todoslosprestamos' %}">Todos los préstamos</a></li>
+            <li><a href="{% url 'prestamo_crear' %}">Realizar un préstamo</a></li>
+            <br>
+            <li><a href="{% url 'autor_crear' %}">Registrar Autor</a></li>
+            <li><a href="{% url 'libro_crear' %}">Registrar Libro</a></li>
           {% endif %}
         </ul>
       {% endblock %}
@@ -66,4 +70,3 @@
 </body>
 
 </html>
-
