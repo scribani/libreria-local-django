@@ -2,18 +2,18 @@
 
 {% block content %}
     {% if form.errors %}
-        <p>
+        <p class="text-warning">
             Su nombre de usuario y contraseña no coinciden. Por favor intente de nuevo.
         </p>
     {% endif %}
 
     {% if next %}
         {% if user.is_authenticated %}
-            <p>
+            <p class="text-danger">
                 Su cuenta no tiene acceso a esta página. Para proceder, por favor ingrese con una cuenta autorizada.
             </p>
         {% else %}
-            <p>Por ingrese para poder visualizar esta página.</p>
+            <p>Por favor ingrese para poder visualizar esta página.</p>
         {% endif %}
     {% endif %}
 

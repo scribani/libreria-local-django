@@ -86,15 +86,15 @@ class VistaDePrestamosStaff(PermissionRequiredMixin, generic.ListView):
         return InstanciaDeLibro.objects.filter(estatus__exact='p').order_by('fecha_de_devolucion')
 
 
-class FormDevolverLibro(PermissionRequiredMixin, ModelForm):
+class FormDevolverLibro(ModelForm):
     """Form function para devolver un prestamo a la libreria"""
-    permission_required = 'catalogo.can_mark_returned'
 
     class Meta:
         model = InstanciaDeLibro
         fields = ['id']
 
 
+@permission_required('catalogo.can_mark_returned')
 def devolver_libro(request, pk):
     instancia_de_libro = get_object_or_404(InstanciaDeLibro, pk=pk)
 
@@ -119,9 +119,8 @@ def devolver_libro(request, pk):
         return render(request, 'libros/devolver_libro.html', context)
 
 
-class FormRenovarLibro(PermissionRequiredMixin, ModelForm):
+class FormRenovarLibro(ModelForm):
     """Form function para aplazar la fecha de devolucion un prestamo"""
-    permission_required = 'catalogo.can_mark_returned'
 
     def clean_fecha_de_devolucion(self):
         data = self.cleaned_data['fecha_de_devolucion']
@@ -141,6 +140,7 @@ class FormRenovarLibro(PermissionRequiredMixin, ModelForm):
         help_texts = {'fecha_de_devolucion': 'Mínimo: mañana - Máximo: 4 semanas'} 
 
 
+@permission_required('catalogo.can_mark_returned')
 def renovar_libro(request, pk):
     instancia_de_libro = get_object_or_404(InstanciaDeLibro, pk=pk)
     fecha_de_renovacion_propuesta = date.today() + timedelta(weeks=3)
