@@ -1,0 +1,59 @@
+[33mcommit 28b92b15d6408b6dcab18cbc94822246397421e4[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31mheroku/master[m[33m, [m[1;32mhelp[m[33m)[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Thu Oct 29 05:48:43 2020 -0500
+
+    added new heroku app to allowed hosts
+
+[33mcommit b52318aa300d1eea021d8b5591478450716c8f10[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Thu Oct 29 05:45:20 2020 -0500
+
+    deleted database to avoid issues with heroku deployment
+
+[33mcommit 871d504c2bc1d8ed451adffa6ad069d56007633e[m[33m ([m[1;31mgithub/master[m[33m)[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Thu Oct 29 04:49:33 2020 -0500
+
+    adding heroku app address as allowed host
+
+[33mcommit 9254310b9d96c2a89b95c5f796cedf7c2c0364e8[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Thu Oct 29 04:02:54 2020 -0500
+
+    adding changes required for deployment to heroku
+
+[33mcommit 4d5aa0558f689a82e00075d8f1add83cc9c78aca[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Wed Oct 28 03:23:21 2020 -0500
+
+    minor changes to README
+
+[33mcommit 1e1a289dc47efe3a7f7d1d5a52a8042fbd7561f5[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Wed Oct 28 03:15:18 2020 -0500
+
+    adding test
+
+[33mcommit 1372cbb864cfcb0aa75924d2d2931c57a554756e[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Tue Oct 20 04:56:47 2020 -0500
+
+    adding forms to manage database objects from webpage
+
+[33mcommit 9402ff029c52f1de31c493775545b0b81420ad78[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Wed Oct 14 05:32:17 2020 -0500
+
+    adding permissions to librarians and views for loans
+
+[33mcommit 043184a96f00be2447466bf952494eb579179c2d[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Tue Oct 13 05:57:42 2020 -0500
+
+    adding user authentication and password management
+
+[33mcommit 6ab84e985f3b16e1f093a58c4b9126c4dc8843d1[m
+Author: Andres Scribani <scribani.andres@gmail.com>
+Date:   Tue Oct 13 03:32:44 2020 -0500
+
+    initial commit
