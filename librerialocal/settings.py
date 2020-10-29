@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'u!+wb)ekn8+!@lczfzp8msnkqoyh)k
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['librerialocal.herokuapp.com']
+ALLOWED_HOSTS = ['librerialocal.herokuapp.com', 'mysterious-earth-51842.herokuapp.com']
 
 
 # Application definition
